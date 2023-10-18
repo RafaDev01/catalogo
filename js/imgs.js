@@ -89,17 +89,17 @@ cadaCategoria.forEach(categoria => {
     let div = document.createElement("div");
     let i = 1;
   
-    function carregarImagem() {
+  async function carregarImagem() {
       let img = document.createElement("img");
       img.src = link + i + ".png";
   
-      img.onload = function () {
+      img.onload = async function () {
         // A imagem carregou com sucesso, então a adicionamos à div
         div.appendChild(img);
-  
         // Continue carregando a próxima imagem
         i++;
-        carregarImagem();
+      
+        await carregarImagem();
       };
   
       img.onerror = function () {
@@ -124,14 +124,6 @@ cadaCategoria.forEach(categoria => {
       botaoPaginaInicial.addEventListener("click",()=>{
         location. reload()
       })
-      if(numeroPagina == 2){
-        let botaoVoltar = document.querySelector('.botao-voltar')
-        botaoVoltar.addEventListener("click",()=>{
-          document.querySelector(".temas").remove()
-          paginaAtual.textContent = "Categorias"
-          document.querySelector(".div-botoes").remove()
-      })
-      } 
     }
   }
 
