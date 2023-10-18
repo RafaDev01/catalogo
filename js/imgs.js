@@ -125,7 +125,12 @@ cadaCategoria.forEach(categoria => {
         location. reload()
       })
       if(numeroPagina == 2){
-        console.log("ok")
+        let botaoVoltar = document.querySelector('.botao-voltar')
+        botaoVoltar.addEventListener("click",()=>{
+          document.querySelector(".temas").remove()
+          paginaAtual.textContent = "Categorias"
+          document.querySelector(".div-botoes").remove()
+      })
       } 
     }
   }
