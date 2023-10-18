@@ -12,7 +12,7 @@ let arrayCategorias = [
     { nome: "Animes" , tema: ["Dragon Ball Z", "Naruto", "One Piece", "Attack on Titan"]},
     { nome: "Datas comemorativas", tema: ["Dia das maes", "Dia dos namorados", "Natal", "Pascoa","Dia dos pais", "Halloween"]},
     { nome: "Times", tema: ["Botafogo","Corinthians", "Cruzeiro", "Flamengo", "Fluminense", "Gremio", "Internacional", "Palmeiras", "Santos", "São Paulo", "Vasco"] },
-    { nome: "Testando a vercel", tema: "ok"}
+    { nome: "Testando a vercel", tema: ["ok"]}
 ];
 
 arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
