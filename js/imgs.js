@@ -89,6 +89,7 @@ cadaCategoria.forEach(categoria => {
     let div = document.createElement("div");
     let i = 1;
     let body = document.body; // Personalize conforme necessário
+    body.appendChild(div)
   
     async function carregarImagem() {
       let img = document.createElement("img");
@@ -111,8 +112,7 @@ cadaCategoria.forEach(categoria => {
         };
   
         proximaImagem.onerror = function () {
-          // A próxima imagem não existe, então não fazemos mais nada
-          body.appendChild(div); // Adiciona a div completa ao corpo do documento
+          console.log("Imgs carregadas com sucesso")
         };
       };
   
