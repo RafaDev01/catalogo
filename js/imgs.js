@@ -85,31 +85,47 @@ cadaCategoria.forEach(categoria => {
     }
   }
 
-  function criarImgs(link) {
+  async function criarImgs(link) {
     let div = document.createElement("div");
     let i = 1;
+    let body = document.body; // Personalize conforme necessário
   
-  async function carregarImagem() {
+    async function carregarImagem() {
       let img = document.createElement("img");
       img.src = link + i + ".png";
   
-      img.onload = async function () {
+      img.onload = function () {
         // A imagem carregou com sucesso, então a adicionamos à div
         div.appendChild(img);
+  
         // Continue carregando a próxima imagem
         i++;
-      
-        await carregarImagem();
+  
+        // Verifica se a próxima imagem existe
+        const proximaImagem = new Image();
+        proximaImagem.src = link + i + ".png";
+  
+        proximaImagem.onload = function () {
+          // A próxima imagem existe, continue carregando
+          carregarImagem();
+        };
+  
+        proximaImagem.onerror = function () {
+          // A próxima imagem não existe, então não fazemos mais nada
+          body.appendChild(div); // Adiciona a div completa ao corpo do documento
+        };
       };
   
       img.onerror = function () {
         // A imagem não carregou corretamente, então não fazemos nada
-        // Adiciona a div ao corpo do documento
         body.appendChild(div);
       };
     }
+  
     carregarImagem(); // Inicie o processo de carregamento da primeira imagem
-  } 
+  }
+  
+  criarImgs(linkImgs);
 
  
 
