@@ -8,11 +8,10 @@ let navegacao = document.querySelector(".navegacao")
 let linkImgs = "assets/img/categorias/"
 
 let arrayCategorias = [
-    { nome: "Filmes", tema: [""] },
     { nome: "Animes" , tema: ["Dragon Ball Z", "Naruto", "One Piece", "Attack on Titan"]},
-    { nome: "Datas comemorativas", tema: ["Dia das maes", "Dia dos namorados", "Natal", "Pascoa","Dia dos pais", "Halloween"]},
+    { nome: "Datas comemorativas", tema: ["Dia das maes", "Dia dos namorados", "Natal", "Páscoa","Dia dos pais", "Halloween"]},
+    {nome: "Desenhos", tema: ["Barbie" , "Bojack Horseman", "Futurama", "Lilo e Stitch", "Mario", "Meninas Super Poderosas", "Mickey", "Minions", "Princesas", "Rick and Morty", "Simpsons", "South Park", "Timão e Pumba", "Turma da Mônica"]},
     { nome: "Times", tema: ["Botafogo","Corinthians", "Cruzeiro", "Flamengo", "Fluminense", "Gremio", "Internacional", "Palmeiras", "Santos", "São Paulo", "Vasco"] },
-    { nome: "Testando a vercel", tema: ["ok"]}
 ];
 
 arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
@@ -52,6 +51,10 @@ cadaCategoria.forEach(categoria => {
     });
   });
 
+  function removerAcentos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
   function percorrerTemasPorNomeCategoria(nomeCategoria) {
     const categoria = arrayCategorias.find(categoria => categoria.nome === nomeCategoria);
     const ul = document.createElement("ul")
@@ -73,6 +76,7 @@ cadaCategoria.forEach(categoria => {
           linkImgs += tema
           paginaAtual.textContent = tema
           ul.remove()    
+          linkImgs = removerAcentos(linkImgs)
           linkImgs = linkImgs.toLowerCase().replace(/\s/g, "")
           numeroPagina++
           botoes()
