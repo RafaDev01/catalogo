@@ -97,7 +97,7 @@ cadaCategoria.forEach(categoria => {
   
     async function carregarImagem() {
       let img = document.createElement("img");
-      img.src = link + i + ".png";
+      img.src = link + i + ".webp";
   
       img.onload = function () {
         // A imagem carregou com sucesso, então a adicionamos à div
@@ -108,7 +108,7 @@ cadaCategoria.forEach(categoria => {
   
         // Verifica se a próxima imagem existe
         const proximaImagem = new Image();
-        proximaImagem.src = link + i + ".png";
+        proximaImagem.src = link + i + ".webp";
   
         proximaImagem.onload = function () {
           // A próxima imagem existe, continue carregando
