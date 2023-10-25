@@ -2,7 +2,7 @@ class Categoria {
 
     static arrayCategorias = [
         { nome: "Animes" , tema: ["Dragon Ball Z", "Naruto", "One Piece", "Attack on Titan"]},
-        { nome: "xamp" , tema: ["xamppp", "Naruto", "One Piece", "Attack on Titan"]},
+        { nome: "Nao tem nada aqui é so teste" , tema: ["xamppp", "Naruto", "One Piece", "Attack on Titan"]},
         { nome: "Datas comemorativas", tema: ["Dia das maes", "Dia dos namorados", "Natal", "Páscoa","Dia dos pais", "Halloween"]},
         {nome: "Desenhos", tema: ["Barbie" , "Bojack Horseman", "Futurama", "Lilo e Stitch", "Mario", "Meninas Super Poderosas", "Mickey", "Minions", "Princesas", "Rick and Morty", "Simpsons", "South Park", "Timão e Pumba", "Turma da Mônica"]},
         { nome: "Times", tema: ["Botafogo","Corinthians", "Cruzeiro", "Flamengo", "Fluminense", "Gremio", "Internacional", "Palmeiras", "Santos", "São Paulo", "Vasco"] },
@@ -39,7 +39,7 @@ class Categoria {
 
     aNavegacao.textContent = nomeCategoria;
     aNavegacao.classList.add("categoria");
-    aNavegacao.setAttribute("href", "../categorias/temas/temas.html")
+    aNavegacao.setAttribute("href", "/pages/temas.html")
 
     novaCategoria.appendChild(aNavegacao);
     this.categorias.appendChild(novaCategoria);

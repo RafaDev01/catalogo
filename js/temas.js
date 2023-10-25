@@ -1,16 +1,7 @@
 import Categoria from "./categorias.js";
 
 class Temas {
-  static temas = Categoria.cadaCategoria;
-
-  static adicionarEventos() {
-    // Use forEach para adicionar eventos a cada tema
-    this.temas.forEach(categoria => {
-      categoria.addEventListener("click", () => {        
-        this.percorrerTemasPorNomeCategoria(categoria.textContent);
-      });
-    });
-  }
+  //static temas = Categoria.cadaCategoria;
 
   static percorrerTemasPorNomeCategoria(nomeCategoria) {
     const categoria = Categoria.arrayCategorias.find(categoria => categoria.nome === nomeCategoria);
@@ -24,18 +15,20 @@ class Temas {
 
       temas.forEach(tema => {
         let li = document.createElement("li");
-        li.classList.add("tema");
-        li.textContent = tema;
+        let a = document.createElement("a")
+        a.setAttribute("href", "/pages/tema-selecionado.html")
+
+        a.classList.add("tema");
+        a.textContent = tema;
+        li.appendChild(a)
 
         li.addEventListener("click", () => {
           // Ação a ser realizada quando um tema for clicado
-          linkImgs = removerAcentos(linkImgs);
-          linkImgs = linkImgs.toLowerCase().replace(/\s/g, "");
-          numeroPagina++;
-          criarImgs(linkImgs);
+          //linkImgs = linkImgs.toLowerCase().replace(/\s/g, "");
         });
 
         ul.appendChild(li);
+        
       });
     } else {
       console.log(`Categoria '${nomeCategoria}' não encontrada.`);
