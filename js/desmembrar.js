@@ -1,9 +1,6 @@
 let numeroPagina = 1;
 
-
 let navegacao = document.querySelector(".navegacao")
-
-
   
   async function criarImgs(link) {
     let div = document.createElement("div");
@@ -77,3 +74,19 @@ function criarBotoes()
 
   navegacao.appendChild(divBotoes)
 }
+
+//categorias
+
+let linkImgs = "link"
+let paginaAtual = document.querySelector(".pagina-atual-2")
+
+
+
+
+
+
+
+
+
+
+ 
