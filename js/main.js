@@ -57,4 +57,4 @@ temas.forEach(categoria => {
     TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"))
 }
 
-    console.log()
+console.log(localStorage.setItem("linkImgs", linkImgs))
