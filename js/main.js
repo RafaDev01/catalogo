@@ -2,7 +2,7 @@ import Categoria from "./categorias.js";
 import Temas from "./temas.js";
 import TemaSelecionado from "./tema-selecionado.js"
 
-var url_atual = window.location.href;
+let url_atual = window.location.href;
 
 if(url_atual.endsWith("/index.html")){
     console.log("Pagina inicial")
@@ -19,43 +19,30 @@ if(url_atual.endsWith("/index.html")){
             linkImgs = linkImgs.toLowerCase()
             localStorage.setItem("linkImgs", linkImgs)
             localStorage.setItem("indexArrayCategoria", i)
+            localStorage.setItem("storageAux", localStorage.getItem("linkImgs"))
         });
       }
 }else if(url_atual.endsWith("/temas.html")) {
-// Suponha que você tenha a URL atual armazenada em localStorage
-var linkImgs = localStorage.getItem("linkImgs");
-
-// Verifique se a URL no localStorage já possui mais de cinco partes
-if (linkImgs) {
-    var partes = linkImgs.split('/');
-    if (partes.length > 5) {
-      // Use slice para manter apenas as cinco primeiras partes e junte-as novamente
-      linkImgs = partes.slice(0, 5).join('/') + '/';
-    }
-  }
-
-// Atualize o valor no localStorage
-
-
-// Restante do código, incluindo a lógica para adicionar event listeners para categorias
 Categoria.arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
 Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[localStorage.getItem("indexArrayCategoria")].nome);
 
+localStorage.setItem("linkImgs", localStorage.getItem("storageAux"))
+
 let temas = [...document.querySelectorAll(".tema")];
-temas.forEach(categoria => {
+temas.forEach((categoria, i) => {
   categoria.addEventListener("click", () => {
-            linkImgs = partes.slice(0, 5).join('/') + '/';
-            let linkImgs2 = localStorage.getItem("linkImgs");
+            let linkImgs = localStorage.getItem("linkImgs");
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
-            localStorage.setItem("linkImgs", linkImgs2 + categoriaSemAcentos + '/' + categoriaSemAcentos);
+            localStorage.setItem("linkImgs", linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos);
+            localStorage.setItem("linkImgs", Categoria.arrayCategorias.tema[i])
   });
-  localStorage.setItem("linkImgs", linkImgs);
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
         TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"))
-}
 
-console.log(localStorage.getItem("linkImgs"))
+console.log("p-->" + localStorage.getItem("linkImgs"))
+console.log("aux-->" + localStorage.getItem("storageAux"))
+}
