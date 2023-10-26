@@ -36,7 +36,8 @@ temas.forEach((categoria, i) => {
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
-            localStorage.setItem("linkImgs", linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos);
+            var aux = linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos
+            localStorage.setItem("linkImgs", aux);
   });
 });
 
