@@ -44,18 +44,12 @@ Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[localStorage.getI
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach(categoria => {
   categoria.addEventListener("click", () => {
-    if(linkImgs) {
-        var partes = linkImgs.split('/');
-        if (partes.length > 5) {
-            // Use slice para manter apenas as cinco primeiras partes e junte-as novamente
             linkImgs = partes.slice(0, 5).join('/') + '/';
             let linkImgs2 = localStorage.getItem("linkImgs");
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
             localStorage.setItem("linkImgs", linkImgs2 + categoriaSemAcentos + '/' + categoriaSemAcentos);
-            }
-        }
   });
   localStorage.setItem("linkImgs", linkImgs);
 });
