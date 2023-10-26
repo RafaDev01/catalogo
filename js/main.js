@@ -32,8 +32,6 @@ if(url_atual.endsWith("/index.html")){
 Categoria.arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
 Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[sessionStorage.getItem("indexArrayCategoria")].nome);
 
-sessionStorage.setItem("linkImgs", sessionStorage.getItem("storageAux"))
-
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach((categoria, i) => {
   categoria.addEventListener("click", (evento) => {
@@ -42,7 +40,7 @@ temas.forEach((categoria, i) => {
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
             let linkImgs = sessionStorage.getItem("linkImgs");
-            var aux = linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos
+            var aux = sessionStorage.getItem("linkImgs") + categoriaSemAcentos + '/' + categoriaSemAcentos
             sessionStorage.setItem("linkImgs", aux);
         });
 });
