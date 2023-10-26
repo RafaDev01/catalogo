@@ -7,27 +7,31 @@ let url_atual = window.location.href;
 if(url_atual.endsWith("/index.html")){
     console.log("Pagina inicial")
 }else if(url_atual.endsWith("/categorias.html")){
+    console.log("p-->" + sessionStorage.getItem("linkImgs"))
+    console.log("aux-->" + sessionStorage.getItem("storageAux"))
     Categoria.organizarCategoriasTemas()
     let getCategorias = [...document.querySelectorAll(".categoria")]
     for (let i = 0; i < getCategorias.length; i++) {
         // Adicione um evento de clique a cada categoria
-        localStorage.setItem("linkImgs", "../assets/img/categorias/")
+        sessionStorage.setItem("linkImgs", "../assets/img/categorias/")
         getCategorias[i].addEventListener("click", function(evento) {
             let categoriaTexto = getCategorias[i].textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             let linkImgs = "../assets/img/categorias/"+ categoriaSemAcentos + "/"
             linkImgs = linkImgs.toLowerCase()
-            localStorage.setItem("linkImgs", linkImgs)
-            localStorage.setItem("indexArrayCategoria", i)
-            localStorage.setItem("storageAux", localStorage.getItem("linkImgs"))
+            sessionStorage.setItem("linkImgs", linkImgs)
+            sessionStorage.setItem("indexArrayCategoria", i)
+            sessionStorage.setItem("storageAux", sessionStorage.getItem("linkImgs"))
             evento.stopPropagation()
         });
       }
 }else if(url_atual.endsWith("/temas.html")) {
+    console.log("p-->" + sessionStorage.getItem("linkImgs"))
+    console.log("aux-->" + sessionStorage.getItem("storageAux"))
 Categoria.arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
-Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[localStorage.getItem("indexArrayCategoria")].nome);
+Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[sessionStorage.getItem("indexArrayCategoria")].nome);
 
-localStorage.setItem("linkImgs", localStorage.getItem("storageAux"))
+sessionStorage.setItem("linkImgs", sessionStorage.getItem("storageAux"))
 
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach((categoria, i) => {
@@ -35,16 +39,16 @@ temas.forEach((categoria, i) => {
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
-            let linkImgs = localStorage.getItem("linkImgs");
+            let linkImgs = sessionStorage.getItem("linkImgs");
             var aux = linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos
-            localStorage.setItem("linkImgs", aux);
+            sessionStorage.setItem("linkImgs", aux);
             categoriaSemAcentos = ""
   });
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
-        TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"))
+        TemaSelecionado.criarImgs(sessionStorage.getItem("linkImgs"))
 
-console.log("p-->" + localStorage.getItem("linkImgs"))
-console.log("aux-->" + localStorage.getItem("storageAux"))
+console.log("p-->" + sessionStorage.getItem("linkImgs"))
+console.log("aux-->" + sessionStorage.getItem("storageAux"))
 }
