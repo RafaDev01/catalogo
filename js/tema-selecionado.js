@@ -8,7 +8,7 @@ class TemaSelecionado{
         async function carregarImagem() {
           let img = document.createElement("img");
           img.src = link + i + ".webp";
-      
+
           img.onload = function () {
             // A imagem carregou com sucesso, então a adicionamos à div
             div.appendChild(img);

@@ -27,12 +27,12 @@ var linkImgs = localStorage.getItem("linkImgs");
 
 // Verifique se a URL no localStorage já possui mais de cinco partes
 if (linkImgs) {
-  var partes = linkImgs.split('/');
-  if (partes.length > 5) {
-    // Use slice para manter apenas as cinco primeiras partes e junte-as novamente
-    linkImgs = partes.slice(0, 5).join('/') + '/';
+    var partes = linkImgs.split('/');
+    if (partes.length > 5) {
+      // Use slice para manter apenas as cinco primeiras partes e junte-as novamente
+      linkImgs = partes.slice(0, 5).join('/') + '/';
+    }
   }
-}
 
 // Atualize o valor no localStorage
 
@@ -44,17 +44,24 @@ Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[localStorage.getI
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach(categoria => {
   categoria.addEventListener("click", () => {
-    let linkImgs = localStorage.getItem("linkImgs");
-    let categoriaTexto = categoria.textContent.replace(/\s/g, '');
-    let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
-    categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
-    localStorage.setItem("linkImgs", linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos);
+    if(linkImgs) {
+        var partes = linkImgs.split('/');
+        if (partes.length > 5) {
+            // Use slice para manter apenas as cinco primeiras partes e junte-as novamente
+            linkImgs = partes.slice(0, 5).join('/') + '/';
+            let linkImgs2 = localStorage.getItem("linkImgs");
+            let categoriaTexto = categoria.textContent.replace(/\s/g, '');
+            let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
+            categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
+            localStorage.setItem("linkImgs", linkImgs2 + categoriaSemAcentos + '/' + categoriaSemAcentos);
+            }
+        }
   });
   localStorage.setItem("linkImgs", linkImgs);
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
-    TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"))
+        TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"))
 }
 
-console.log(localStorage.setItem("linkImgs", linkImgs))
+console.log(localStorage.getItem("linkImgs"))
