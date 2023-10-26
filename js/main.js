@@ -12,7 +12,7 @@ if(url_atual.endsWith("/index.html")){
     for (let i = 0; i < getCategorias.length; i++) {
         // Adicione um evento de clique a cada categoria
         localStorage.setItem("linkImgs", "../assets/img/categorias/")
-        getCategorias[i].addEventListener("click", function() {
+        getCategorias[i].addEventListener("click", function(evento) {
             let categoriaTexto = getCategorias[i].textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             let linkImgs = "../assets/img/categorias/"+ categoriaSemAcentos + "/"
@@ -20,6 +20,7 @@ if(url_atual.endsWith("/index.html")){
             localStorage.setItem("linkImgs", linkImgs)
             localStorage.setItem("indexArrayCategoria", i)
             localStorage.setItem("storageAux", localStorage.getItem("linkImgs"))
+            evento.stopPropagation()
         });
       }
 }else if(url_atual.endsWith("/temas.html")) {
@@ -30,13 +31,15 @@ localStorage.setItem("linkImgs", localStorage.getItem("storageAux"))
 
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach((categoria, i) => {
-  categoria.addEventListener("click", () => {
+  categoria.addEventListener("click", (evento) => {
             let linkImgs = localStorage.getItem("linkImgs");
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
             localStorage.setItem("linkImgs", linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos);
             localStorage.setItem("linkImgs", Categoria.arrayCategorias.tema[i])
+            evento.preventDefault()
+            evento.stopPropagation()
   });
 });
 
