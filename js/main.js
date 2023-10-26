@@ -32,12 +32,13 @@ localStorage.setItem("linkImgs", localStorage.getItem("storageAux"))
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach((categoria, i) => {
   categoria.addEventListener("click", (evento) => {
-            let linkImgs = localStorage.getItem("linkImgs");
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
+            let linkImgs = localStorage.getItem("linkImgs");
             var aux = linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos
             localStorage.setItem("linkImgs", aux);
+            categoriaSemAcentos = ""
   });
 });
 
