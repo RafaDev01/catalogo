@@ -22,6 +22,7 @@ if(url_atual.endsWith("/index.html")){
             sessionStorage.setItem("linkImgs", linkImgs)
             sessionStorage.setItem("indexArrayCategoria", i)
             sessionStorage.setItem("storageAux", sessionStorage.getItem("linkImgs"))
+            sessionStorage.setItem("auxLinkImgs", linkImgs)
             evento.stopPropagation()
         });
       }
@@ -36,14 +37,14 @@ sessionStorage.setItem("linkImgs", sessionStorage.getItem("storageAux"))
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach((categoria, i) => {
   categoria.addEventListener("click", (evento) => {
+            sessionStorage.setItem("linkImgs",sessionStorage.getItem("auxLinkImgs"))
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
             let linkImgs = sessionStorage.getItem("linkImgs");
             var aux = linkImgs + categoriaSemAcentos + '/' + categoriaSemAcentos
             sessionStorage.setItem("linkImgs", aux);
-            categoriaSemAcentos = ""
-  });
+        });
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
