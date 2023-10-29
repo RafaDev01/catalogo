@@ -14,11 +14,7 @@ body{
 }
 
 header{
-    height: calc(20vh - constant(safe-area-inset-top));
-    height: calc(20vh - env(safe-area-inset-top));
-    margin-top: constant(safe-area-inset-top);
-    margin-top: env(safe-area-inset-top);
-    overflow: hidden;
+    height: 20vh;
 }
 
 .logo{
@@ -34,11 +30,7 @@ header{
 .section-top{
     display: flex;
     justify-content: center;
-    height: calc(16vh - constant(safe-area-inset-top));
-    height: calc(16vh - env(safe-area-inset-top));
-    margin-top: constant(safe-area-inset-top);
-    margin-top: env(safe-area-inset-top);
-    overflow: hidden;
+    height: 16vh;
 }
 
 .produtos{
@@ -58,11 +50,7 @@ header{
 }
 
 .section-bottom{
-    height: calc(64vh - constant(safe-area-inset-top));
-    height: calc(64vh - env(safe-area-inset-top));
-    margin-top: constant(safe-area-inset-top);
-    margin-top: env(safe-area-inset-top);
-    overflow: hidden;
+    height: 64vh;
     position: relative;
     display: flex;
     align-items: center; 
