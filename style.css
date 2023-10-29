@@ -14,7 +14,11 @@ body{
 }
 
 header{
-    height: 20vh;
+    height: calc(20vh - constant(safe-area-inset-top));
+    height: calc(20vh - env(safe-area-inset-top));
+    margin-top: constant(safe-area-inset-top);
+    margin-top: env(safe-area-inset-top);
+    overflow: hidden;
 }
 
 .logo{
@@ -30,7 +34,11 @@ header{
 .section-top{
     display: flex;
     justify-content: center;
-    height: 16vh;
+    height: calc(16vh - constant(safe-area-inset-top));
+    height: calc(16vh - env(safe-area-inset-top));
+    margin-top: constant(safe-area-inset-top);
+    margin-top: env(safe-area-inset-top);
+    overflow: hidden;
 }
 
 .produtos{
@@ -50,7 +58,11 @@ header{
 }
 
 .section-bottom{
-    height: 64vh;
+    height: calc(64vh - constant(safe-area-inset-top));
+    height: calc(64vh - env(safe-area-inset-top));
+    margin-top: constant(safe-area-inset-top);
+    margin-top: env(safe-area-inset-top);
+    overflow: hidden;
     position: relative;
     display: flex;
     align-items: center; 
@@ -65,6 +77,7 @@ header{
     font-weight: bolder;
     left: 64px;
     top: 20px;
+    user-select: none;
 }
 
 .img-balao{
