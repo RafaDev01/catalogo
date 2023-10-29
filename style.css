@@ -6,8 +6,6 @@
 }
 
 body{
-    display: flex;
-    flex-direction: column;
     background-image: url("assets/img/desing/background.webp");
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,11 +13,14 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+header{
+    height: 20vh;
+}
+
 .logo{
     display: flex;  
     justify-content: space-between;
     padding: 4px;
-    margin-bottom: 24px;
 }
 
 .logo img{
@@ -29,7 +30,7 @@ body{
 .section-top{
     display: flex;
     justify-content: center;
-    height: 30vh;
+    height: 16vh;
 }
 
 .produtos{
@@ -49,5 +50,32 @@ body{
 }
 
 .section-bottom{
-    height: 100vh;
+    height: 64vh;
+    position: relative;
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+}
+
+.frase-balao{
+    position: absolute;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    left: 64px;
+    top: 20px;
+}
+
+.img-balao{
+    width: 360px;
+    height: 180px;
+}
+
+
+.img-caneta-azul{
+    position: absolute;
+    width: 360px;
+    bottom: 0;
+    left: 0;
 }
