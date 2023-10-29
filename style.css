@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+body{
+    background-image: url("assets/img/desing/background.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .logo{
     display: flex;  
     justify-content: space-between;
@@ -13,8 +20,4 @@
 
 .logo img{
     width: 80px;
-}
-
-.main-img{
-    background-image: url("assets/img/desing/background.webp");
 }
