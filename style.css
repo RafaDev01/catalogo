@@ -6,18 +6,48 @@
 }
 
 body{
+    display: flex;
+    flex-direction: column;
     background-image: url("assets/img/desing/background.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .logo{
     display: flex;  
     justify-content: space-between;
     padding: 4px;
+    margin-bottom: 24px;
 }
 
 .logo img{
     width: 100px;
+}
+
+.section-top{
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+}
+
+.produtos{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    padding: 24px 68px;
+    background-color: #B1E0FF;
+    font-size: 24px;
+    border-radius: 12px;
+}
+
+.touch-img{
+    position: absolute;
+    right: 60px;
+    width: 66px;
+}
+
+.section-bottom{
+    height: 100vh;
 }
