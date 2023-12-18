@@ -13,7 +13,7 @@
 }
 
 body{
-    background-image: url("assets/img/desing/background.webp");
+    background-image: url("../assets/img/design/background.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
