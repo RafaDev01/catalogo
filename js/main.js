@@ -3,8 +3,10 @@ import Temas from "./temas.js";
 import TemaSelecionado from "./tema-selecionado.js"
 import { adicionarItem } from "./carrinho.js"
 
-let quantItemP = document.querySelector(".quant-itens-p");
-quantItemP.textContent = localStorage.getItem("quantItens")
+window.addEventListener("load", () => {
+    let quantItemP = document.querySelector(".quant-itens-p");
+    quantItemP.textContent = localStorage.getItem("quantItens")
+})
 
 let url_atual = window.location.href;
 console.log(url_atual)
