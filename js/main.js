@@ -4,7 +4,7 @@ import TemaSelecionado from "./tema-selecionado.js"
 
 let url_atual = window.location.href;
 
-if(url_atual.endsWith("index.html")){
+if(url_atual.endsWith("index.html") || url_atual.endsWith("vercel.app")){
     console.log("p-->" + sessionStorage.getItem("linkImgs"))
     console.log("aux-->" + sessionStorage.getItem("storageAux"))
     Categoria.organizarCategoriasTemas()
