@@ -21,78 +21,8 @@ body{
 }
 
 header{
-    height: 20vh;
+    height: 100px;
 }
-
-.logo{
-    display: flex;  
-    justify-content: space-between;
-    padding: 4px;
-}
-
-.logo img{
-    width: 100px;
-}
-
-.section-top{
-    display: flex;
-    justify-content: center;
-    height: 16vh;
-}
-
-.produtos{
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
-    padding: 24px 68px;
-    background-color: #B1E0FF;
-    font-size: 24px;
-    border-radius: 12px;
-}
-
-.touch-img{
-    position: absolute;
-    right: 60px;
-    width: 66px;
-}
-
-.section-bottom{
-    height: 64vh;
-    position: relative;
-    display: flex;
-    align-items: center; 
-    flex-direction: column;
-}
-
-.frase-balao{
-    position: absolute;
-    text-align: center;
-    font-size: 2em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bolder;
-    left: 60px;
-    top: 20px;
-    user-select: none;
-}
-
-.img-balao{
-    width: 360px;
-    height: 180px;
-}
-
-
-.img-caneta-azul{
-    position: absolute;
-    width: 360px;
-    bottom: 0;
-    left: 0;
-}
-
-.box-balao{
-    position: relative;
-}
-
-/*========================================================*/
 
 .page-title{
     color: var(--laranja-principal);
@@ -148,4 +78,14 @@ img{
     width: 50px;
     height: 50px;
     background-color: #B1E0FF;
+}
+
+.header{
+    display: flex;  
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.header img{
+    width: 100px;
 }

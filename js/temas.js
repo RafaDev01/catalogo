@@ -12,6 +12,7 @@ class Temas {
       document.body.appendChild(ul);
 
       let temas = Array.isArray(categoria.tema) ? categoria.tema : [categoria.tema];
+      temas.sort((a, b) => a.localeCompare(b));
 
       temas.forEach(tema => {
         let li = document.createElement("li");

@@ -4,16 +4,14 @@ import TemaSelecionado from "./tema-selecionado.js"
 
 let url_atual = window.location.href;
 
-if(url_atual.endsWith("/index.html")){
-    console.log("Pagina inicial")
-}else if(url_atual.endsWith("/categorias.html")){
+if(url_atual.endsWith("index.html")){
     console.log("p-->" + sessionStorage.getItem("linkImgs"))
     console.log("aux-->" + sessionStorage.getItem("storageAux"))
     Categoria.organizarCategoriasTemas()
     let getCategorias = [...document.querySelectorAll(".categoria")]
     for (let i = 0; i < getCategorias.length; i++) {
         // Adicione um evento de clique a cada categoria
-        sessionStorage.setItem("linkImgs", "../assets/img/categorias/")
+        
         getCategorias[i].addEventListener("click", function(evento) {
             let categoriaTexto = getCategorias[i].textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");

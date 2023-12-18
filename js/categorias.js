@@ -6,10 +6,9 @@ class Categoria {
         { nome: "Marvel" , tema: ["Diversos", "Homem Aranha", "Homem de Ferro"]},
         { nome: "Jogos" , tema: ["Free Fire"]},
         { nome: "DC" , tema: ["Arlequina", "Coringa", "Flash", "Jovens Titans", "Lanterna Verde", "Diversos"]},
-        { nome: "Nao tem nada aqui é so teste" , tema: ["xamppp", "Naruto", "One Piece", "Attack on Titan"]},
         { nome: "Datas comemorativas", tema: ["Dia das maes", "Dia dos namorados", "Natal", "Páscoa","Dia dos pais", "Halloween"]},
         {nome: "Desenhos", tema: ["Barbie" , "Bojack Horseman", "Futurama", "Lilo e Stitch", "Ateste", "Mario", "Meninas Super Poderosas", "Mickey", "Minions", "Princesas", "Rick and Morty", "Simpsons", "South Park", "Timão e Pumba", "Turma da Mônica"]},
-        { nome: "Times", tema: ["Botafogo","Corinthians", "Cruzeiro", "Flamengo", "Fluminense", "Gremio", "Internacional", "Palmeiras", "Santos", "São Paulo", "Vasco"] },
+        { nome: "Times", tema: ["Botafogo","Corinthians", "Cruzeiro", "Flamengo", "Fluminense", "Gremio", "Internacional", "Palmeiras", "Santos", "São Paulo", "Vasco"] }
     ]; 
 
   static categorias = document.querySelector(".categorias");
