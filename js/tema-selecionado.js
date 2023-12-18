@@ -1,6 +1,7 @@
 class TemaSelecionado{
     static async criarImgs(link) {
         let div = document.createElement("div");
+        div.setAttribute("class", "boxes")
         let i = 1;
         let body = document.body; // Personalize conforme necessário
         body.appendChild(div)
@@ -11,7 +12,15 @@ class TemaSelecionado{
 
           img.onload = function () {
             // A imagem carregou com sucesso, então a adicionamos à div
-            div.appendChild(img);
+            let divBox = document.createElement("div");
+            divBox.setAttribute("class", "box-img")
+
+            //let buttonCarrinho = document.createElement("div");
+            //buttonCarrinho.setAttribute("class", "button-carrinho")
+
+            div.appendChild(divBox);
+            divBox.appendChild(img);
+            //divBox.appendChild(buttonCarrinho)
       
             // Continue carregando a próxima imagem
             i++;
