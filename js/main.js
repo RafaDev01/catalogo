@@ -3,11 +3,6 @@ import Temas from "./temas.js";
 import TemaSelecionado from "./tema-selecionado.js"
 import { adicionarItem } from "./carrinho.js"
 
-window.addEventListener("load", () => {
-    let quantItemP = document.querySelector(".quant-itens-p");
-    quantItemP.textContent = localStorage.getItem("quantItens")
-})
-
 let url_atual = window.location.href;
 console.log(url_atual)
 
@@ -63,3 +58,8 @@ temas.forEach((categoria, i) => {
         });
     });
 }
+
+window.addEventListener("load", () => {
+    let quantItemP = document.querySelector(".quant-itens-p");
+    quantItemP.textContent = localStorage.getItem("quantItens")
+})
