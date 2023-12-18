@@ -59,7 +59,8 @@ temas.forEach((categoria, i) => {
     });
 }
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
     let quantItemP = document.querySelector(".quant-itens-p");
     quantItemP.textContent = localStorage.getItem("quantItens")
 })
+    
