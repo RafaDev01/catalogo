@@ -60,7 +60,9 @@ temas.forEach((categoria, i) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let quantItemP = document.querySelector(".quant-itens-p");
-    quantItemP.textContent = localStorage.getItem("quantItens")
+    setTimeout(()=>{
+        let quantItemP = document.querySelector(".quant-itens-p");
+        quantItemP.textContent = localStorage.getItem("quantItens")
+    },1000)
 })
     
