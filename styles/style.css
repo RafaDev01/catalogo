@@ -3,6 +3,13 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --laranja-principal: #FF6600;
+    --azul-principal: #B1E0FF;
+    --tamanho-fonte: 16px;
 }
 
 body{
@@ -10,7 +17,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 header{
@@ -83,4 +90,40 @@ header{
 
 .box-balao{
     position: relative;
+}
+
+/*========================================================*/
+
+.page-title{
+    color: var(--laranja-principal);
+    text-align: center;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-bottom: 12px;
+}
+
+.categorias, .temas{
+    text-align: center;
+}
+
+.categorias li, .temas li{
+
+    background-color: var(--azul-principal);
+    text-decoration: none;
+    margin: 0 auto;
+    width: 90vw;
+    list-style: none;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    border: 2px solid #1da5ff;
+}
+
+.categoria, .tema{
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    display: block; 
+    padding: 16px;
+
+    font-weight: bolder;
 }
