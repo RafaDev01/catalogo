@@ -15,12 +15,13 @@ class TemaSelecionado{
             let divBox = document.createElement("div");
             divBox.setAttribute("class", "box-img")
 
-            //let buttonCarrinho = document.createElement("div");
-            //buttonCarrinho.setAttribute("class", "button-carrinho")
+            let buttonCarrinho = document.createElement("button");
+            buttonCarrinho.setAttribute("class", "button-carrinho")
+            buttonCarrinho.textContent = "Adicionar ao carrinho"
 
             div.appendChild(divBox);
             divBox.appendChild(img);
-            //divBox.appendChild(buttonCarrinho)
+            divBox.appendChild(buttonCarrinho)
       
             // Continue carregando a próxima imagem
             i++;

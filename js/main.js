@@ -1,6 +1,10 @@
 import Categoria from "./categorias.js";
 import Temas from "./temas.js";
 import TemaSelecionado from "./tema-selecionado.js"
+import { adicionarItem } from "./carrinho.js"
+
+let quantItemP = document.querySelector(".quant-itens-p");
+quantItemP.textContent = localStorage.getItem("quantItens")
 
 let url_atual = window.location.href;
 console.log(url_atual)
@@ -45,8 +49,15 @@ temas.forEach((categoria, i) => {
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
-        TemaSelecionado.criarImgs(sessionStorage.getItem("linkImgs"))
 
-console.log("p-->" + sessionStorage.getItem("linkImgs"))
-console.log("aux-->" + sessionStorage.getItem("storageAux"))
+    TemaSelecionado.criarImgs(sessionStorage.getItem("linkImgs"));
+        
+    window.addEventListener("load", () => {
+    let botoesDasImg = [...document.querySelectorAll(".button-carrinho")];
+    botoesDasImg.forEach(element => {
+            element.addEventListener("click", () => {
+                adicionarItem();
+            });
+        });
+    });
 }
