@@ -7,8 +7,8 @@ let url_atual = window.location.href;
 console.log(url_atual)
 
 if(url_atual.endsWith("index.html") || url_atual == "https://4funcafe.vercel.app/"){
-    console.log("p-->" + sessionStorage.getItem("linkImgs"))
-    console.log("aux-->" + sessionStorage.getItem("storageAux"))
+    console.log("p-->" + localStorage.getItem("linkImgs"))
+    console.log("aux-->" + localStorage.getItem("storageAux"))
     Categoria.organizarCategoriasTemas()
     let getCategorias = [...document.querySelectorAll(".categoria")]
     for (let i = 0; i < getCategorias.length; i++) {
@@ -19,77 +19,96 @@ if(url_atual.endsWith("index.html") || url_atual == "https://4funcafe.vercel.app
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             let linkImgs = "../assets/img/categorias/"+ categoriaSemAcentos + "/"
             linkImgs = linkImgs.toLowerCase()
-            sessionStorage.setItem("linkImgs", linkImgs)
-            sessionStorage.setItem("indexArrayCategoria", i)
-            sessionStorage.setItem("storageAux", sessionStorage.getItem("linkImgs"))
-            sessionStorage.setItem("auxLinkImgs", linkImgs)
+            localStorage.setItem("linkImgs", linkImgs)
+            localStorage.setItem("indexArrayCategoria", i)
+            localStorage.setItem("storageAux", localStorage.getItem("linkImgs"))
+            localStorage.setItem("auxLinkImgs", linkImgs)
             evento.stopPropagation()
         });
       }
 }else if(url_atual.endsWith("/temas.html")) {
-    console.log("p-->" + sessionStorage.getItem("linkImgs"))
-    console.log("aux-->" + sessionStorage.getItem("storageAux"))
+    console.log("p-->" + localStorage.getItem("linkImgs"))
+    console.log("aux-->" + localStorage.getItem("storageAux"))
 Categoria.arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
-Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[sessionStorage.getItem("indexArrayCategoria")].nome);
+Temas.percorrerTemasPorNomeCategoria(Categoria.arrayCategorias[localStorage.getItem("indexArrayCategoria")].nome);
 
 let temas = [...document.querySelectorAll(".tema")];
 temas.forEach((categoria, i) => {
   categoria.addEventListener("click", (evento) => {
-            sessionStorage.setItem("linkImgs",sessionStorage.getItem("auxLinkImgs"))
+            localStorage.setItem("linkImgs",localStorage.getItem("auxLinkImgs"))
             let categoriaTexto = categoria.textContent.replace(/\s/g, '');
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             categoriaSemAcentos = categoriaSemAcentos.toLowerCase();
-            let linkImgs = sessionStorage.getItem("linkImgs");
-            var aux = sessionStorage.getItem("linkImgs") + categoriaSemAcentos + '/' + categoriaSemAcentos
-            sessionStorage.setItem("linkImgs", aux);
+            let linkImgs = localStorage.getItem("linkImgs");
+            var aux = localStorage.getItem("linkImgs") + categoriaSemAcentos + '/' + categoriaSemAcentos
+            localStorage.setItem("linkImgs", aux);
         });
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
+    async function carregarConteudo() {
+        // Aguarde a conclusão da função assíncrona
+        await TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"));
+      
+        criarBotoesDoCarrinho()
+      
+        // Adicione aqui o restante do código que deseja executar após a carga do conteúdo.
+      }
+      
+      // Chame a função que contém a lógica assíncrona
+      carregarConteudo();
+}
 
-    TemaSelecionado.criarImgs(sessionStorage.getItem("linkImgs"));
-        
+function criarBotoesDoCarrinho(){
     window.addEventListener("load", () => {
-    let botoesDasImg = [...document.querySelectorAll(".button-carrinho")];
-    botoesDasImg.forEach(element => {
-            element.addEventListener("click", () => {
-                let p = document.createElement("p")
-                let quantidade = document.createElement("p")
-                let buttonMais = document.createElement("button")
-                let buttonMenos = document.createElement("button")
-                let container = document.createElement("div")
-                let botaoAdicionarAoCarrinho = document.createElement("button")
-
-                container.classList.add("container-quant")
-                p.classList.add("p-quantidade")
-                quantidade.classList.add("quantidade")
-                buttonMais.classList.add("btn-mais")
-                buttonMenos.classList.add("btn-menos")
-                botaoAdicionarAoCarrinho.classList.add("adicionar-ao-carrinho")
-
-                p.textContent = "Quantidade: "
-                quantidade.textContent = 0;
-                buttonMais.textContent = "+"        
-                buttonMenos.textContent = "-"
-                botaoAdicionarAoCarrinho.textContent = "Adicionar ao carrinho"
-
-                container.appendChild(p)
-                container.appendChild(buttonMais)
-                container.appendChild(quantidade)
-                container.appendChild(buttonMenos)
-
-                element.parentElement.appendChild(container)
-                element.parentElement.appendChild(botaoAdicionarAoCarrinho)
-
-                addQuant(buttonMais, quantidade)
-                removerQuant(buttonMenos, quantidade)
-                botaoAdicionarAoCarrinho.addEventListener("click", ()=>{
-                    adicionarItem(parseInt(quantidade.textContent))
-                })
-                element.remove()
+        let botoesDasImg = [...document.querySelectorAll(".button-carrinho")];
+        botoesDasImg.forEach(element => {
+                element.addEventListener("click", () => {
+                    let p = document.createElement("p")
+                    let quantidade = document.createElement("p")
+                    let buttonMais = document.createElement("button")
+                    let buttonMenos = document.createElement("button")
+                    let container = document.createElement("div")
+                    let botaoAdicionarAoCarrinho = document.createElement("button")
+    
+                    container.classList.add("container-quant")
+                    p.classList.add("p-quantidade")
+                    quantidade.classList.add("quantidade")
+                    buttonMais.classList.add("btn-mais")
+                    buttonMenos.classList.add("btn-menos")
+                    botaoAdicionarAoCarrinho.classList.add("adicionar-ao-carrinho")
+    
+                    p.textContent = "Quantidade: "
+                    quantidade.textContent = 0;
+                    buttonMais.textContent = "+"        
+                    buttonMenos.textContent = "-"
+                    botaoAdicionarAoCarrinho.textContent = "Adicionar ao carrinho"
+    
+                    container.appendChild(p)
+                    container.appendChild(buttonMenos)
+                    container.appendChild(quantidade)
+                    container.appendChild(buttonMais)
+    
+                    element.parentElement.appendChild(container)
+                    element.parentElement.appendChild(botaoAdicionarAoCarrinho)
+    
+                    addQuant(buttonMais, quantidade)
+                    removerQuant(buttonMenos, quantidade)
+                    botaoAdicionarAoCarrinho.addEventListener("click", ()=>{
+                        
+                        if(quantidade.textContent > 0){
+                            adicionarItem(parseInt(quantidade.textContent))
+                            botaoAdicionarAoCarrinho.remove()
+                            buttonMais.remove()
+                            buttonMenos.remove()
+                            quantidade.remove()
+                            p.textContent = "Itens adicionados ao carrinho."
+                        }
+                    })
+                    element.remove()
+                });
             });
         });
-    });
 }
 
 function addQuant(botao, quantidade){
@@ -108,15 +127,5 @@ function removerQuant(botao, quantidade){
     })
 }
 
-function funAdicionarAoCarrinho(botao)
-{
-    adicionarItem()
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(()=>{
-        let quantItemP = document.querySelector(".quant-itens-p");
-        quantItemP.textContent = localStorage.getItem("quantItens")
-    },1000)
-})
-    
+let quantItemP = document.querySelector(".quant-itens-p")
+quantItemP.textContent = localStorage.getItem("quantItens")
