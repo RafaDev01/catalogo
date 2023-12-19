@@ -18,6 +18,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
 }
 
 header{
@@ -89,6 +90,9 @@ img{
     height: 60px;
     width: 50vw;
     background-color: #B1E0FF;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
 }
 
 .header{
@@ -138,3 +142,52 @@ img{
     vertical-align: auto;
     border-radius: 50%;
 }
+
+.container-quant {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px; /* Ajuste a altura conforme necessário */
+  }
+  
+  .p-quantidade {
+    height: 60px;
+    align-self: center;
+    line-height: 50px;
+    font-size: 26px;
+    margin-right: 6px;
+  }
+  
+  .btn-mais, .btn-menos, .quantidade {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    align-self: center;
+    font-size: 30px;
+  }
+
+  .btn-mais, .btn-menos{
+    border-radius: 50%;
+    font-weight: bolder;
+    padding-bottom: 6px;
+    background-color: var(--laranja-principal);
+    color: white;
+  }
+
+  .quantidade {
+    height: 60px;
+    align-self: center;
+    line-height: 50px;
+    font-size: 30px;
+  }
+
+  .adicionar-ao-carrinho{
+    margin: 12px;
+    padding: 16px;
+    border-radius: 16px;
+    width: 300px;
+    background-color: var(--azul-principal);
+    border: 2px solid #1da5ff;
+    font-size: 20px;
+    color: black;
+  }

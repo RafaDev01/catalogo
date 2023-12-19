@@ -1,3 +1,5 @@
+import Categoria from "./categorias.js";
+
 let quantItemP = document.querySelector(".quant-itens-p");
 
 function obterQuantidadeItens() {
@@ -18,8 +20,8 @@ function inicializarQuantidadeItens() {
 }
 
 // Função para adicionar um item e atualizar a quantidade no localStorage
-function adicionarItem() {
-    let quantItens = obterQuantidadeItens() + 1;
+function adicionarItem(quantidade) {
+    let quantItens = obterQuantidadeItens() + quantidade;
     atualizarQuantidadeItens(quantItens);
 
     quantItemP.textContent = quantItens;

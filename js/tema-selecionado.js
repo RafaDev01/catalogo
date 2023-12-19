@@ -17,7 +17,7 @@ class TemaSelecionado{
 
             let buttonCarrinho = document.createElement("button");
             buttonCarrinho.setAttribute("class", "button-carrinho")
-            buttonCarrinho.textContent = "Adicionar ao carrinho"
+            buttonCarrinho.textContent = "Selecionar"
 
             div.appendChild(divBox);
             divBox.appendChild(img);

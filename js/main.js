@@ -53,10 +53,64 @@ temas.forEach((categoria, i) => {
     let botoesDasImg = [...document.querySelectorAll(".button-carrinho")];
     botoesDasImg.forEach(element => {
             element.addEventListener("click", () => {
-                adicionarItem();
+                let p = document.createElement("p")
+                let quantidade = document.createElement("p")
+                let buttonMais = document.createElement("button")
+                let buttonMenos = document.createElement("button")
+                let container = document.createElement("div")
+                let botaoAdicionarAoCarrinho = document.createElement("button")
+
+                container.classList.add("container-quant")
+                p.classList.add("p-quantidade")
+                quantidade.classList.add("quantidade")
+                buttonMais.classList.add("btn-mais")
+                buttonMenos.classList.add("btn-menos")
+                botaoAdicionarAoCarrinho.classList.add("adicionar-ao-carrinho")
+
+                p.textContent = "Quantidade: "
+                quantidade.textContent = 0;
+                buttonMais.textContent = "+"        
+                buttonMenos.textContent = "-"
+                botaoAdicionarAoCarrinho.textContent = "Adicionar ao carrinho"
+
+                container.appendChild(p)
+                container.appendChild(buttonMais)
+                container.appendChild(quantidade)
+                container.appendChild(buttonMenos)
+
+                element.parentElement.appendChild(container)
+                element.parentElement.appendChild(botaoAdicionarAoCarrinho)
+
+                addQuant(buttonMais, quantidade)
+                removerQuant(buttonMenos, quantidade)
+                botaoAdicionarAoCarrinho.addEventListener("click", ()=>{
+                    adicionarItem(parseInt(quantidade.textContent))
+                })
+                element.remove()
             });
         });
     });
+}
+
+function addQuant(botao, quantidade){
+    botao.addEventListener('click', () =>{
+        quantidade.textContent++
+    })
+}
+
+function removerQuant(botao, quantidade){
+    botao.addEventListener('click', () =>{
+        if(quantidade.textContent == 0){
+            return
+        }else{
+            quantidade.textContent--
+        }
+    })
+}
+
+function funAdicionarAoCarrinho(botao)
+{
+    adicionarItem()
 }
 
 document.addEventListener("DOMContentLoaded", () => {
