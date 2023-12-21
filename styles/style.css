@@ -67,7 +67,7 @@ header{
 
 .box-img {
     border: 4px solid #1da5ff;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -190,4 +190,16 @@ img{
     border: 2px solid #1da5ff;
     font-size: 20px;
     color: black;
+  }
+
+  .numero-da-arte{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff6600d7;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
   }

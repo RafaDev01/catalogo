@@ -24,8 +24,7 @@ class Temas {
         li.appendChild(a)
 
         li.addEventListener("click", () => {
-          // Ação a ser realizada quando um tema for clicado
-          //linkImgs = linkImgs.toLowerCase().replace(/\s/g, "");
+           localStorage.setItem("nomeDoTemaDaPagina", a.textContent)
         });
 
         ul.appendChild(li);

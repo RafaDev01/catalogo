@@ -1,7 +1,7 @@
 import Categoria from "./categorias.js";
 import Temas from "./temas.js";
 import TemaSelecionado from "./tema-selecionado.js"
-import { adicionarItem } from "./carrinho.js"
+import { adicionarItem, adicionarItemAoCarrinho, limparCarrinho } from "./carrinho.js"
 
 let url_atual = window.location.href;
 console.log(url_atual)
@@ -19,10 +19,9 @@ if(url_atual.endsWith("index.html") || url_atual == "https://4funcafe.vercel.app
             let categoriaSemAcentos = categoriaTexto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^\w\s]/g, "");
             let linkImgs = "../assets/img/categorias/"+ categoriaSemAcentos + "/"
             linkImgs = linkImgs.toLowerCase()
-            localStorage.setItem("linkImgs", linkImgs)
             localStorage.setItem("indexArrayCategoria", i)
-            localStorage.setItem("storageAux", localStorage.getItem("linkImgs"))
             localStorage.setItem("auxLinkImgs", linkImgs)
+            localStorage.setItem("categoria", getCategorias[i].textContent)
             evento.stopPropagation()
         });
       }
@@ -95,7 +94,13 @@ function criarBotoesDoCarrinho(){
                     addQuant(buttonMais, quantidade)
                     removerQuant(buttonMenos, quantidade)
                     botaoAdicionarAoCarrinho.addEventListener("click", ()=>{
+                        let categoria = localStorage.getItem("categoria")
+                        let numeroDaArte = parseInt(botaoAdicionarAoCarrinho.parentElement.firstChild.textContent.split(":")[1].trim())
                         
+                        let nomeDoTema = localStorage.getItem("nomeDoTemaDaPagina")
+
+                        adicionarItemAoCarrinho(categoria ,nomeDoTema, numeroDaArte, parseInt(quantidade.textContent));
+
                         if(quantidade.textContent > 0){
                             adicionarItem(parseInt(quantidade.textContent))
                             botaoAdicionarAoCarrinho.remove()

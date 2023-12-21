@@ -27,6 +27,30 @@ function adicionarItem(quantidade) {
     quantItemP.textContent = quantItens;
 }
 
+function adicionarItemAoCarrinho(nomeCategoria, nomeItem, numeroItem, quantidade) {
+    // Verifica se já existe algum item no carrinho
+    let carrinhoItens = JSON.parse(localStorage.getItem("carrinhoItens")) || [];
+
+    // Adiciona o novo item ao carrinho
+    carrinhoItens.push({
+        categoria: nomeCategoria,
+        nome: nomeItem,
+        numeroArte: numeroItem,
+        quantidade: quantidade
+    });
+
+    // Atualiza o carrinho no localStorage
+    localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoItens));
+}
+
+function limparCarrinho() {
+    // Define o carrinho como um array vazio
+    const carrinhoVazio = [];
+    
+    // Atualiza o carrinho no localStorage
+    localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoVazio));
+}
+
 inicializarQuantidadeItens()
 
-export { adicionarItem };
+export { adicionarItem, adicionarItemAoCarrinho, limparCarrinho };
