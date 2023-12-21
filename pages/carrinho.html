@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>4Fun Café - Categorias</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="shortcut icon" href="assets/img/design/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <h1>Aqui é o carrinho</h1>
+    <header>
+        <div class="header">
+            <img src="../assets/img/design/logo.png" alt="logo-img">
+            <div class="box-carrinho">
+                <a class="carrinho" href="../index.html">
+                    Continuar escolhendo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <h2 class="page-title">Seus itens:</h2>
+    <ul class="itens-carrinho">
+    </ul>
+
+    <button class="btn-limpar-carrinho">Limpar carrinho</button>
+    
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/carrinho.js"></script>
 </body>
 </html>

@@ -7,6 +7,8 @@ let url_atual = window.location.href;
 console.log(url_atual)
 
 if(url_atual.endsWith("index.html") || url_atual == "https://4funcafe.vercel.app/"){
+    let quantItemP = document.querySelector(".quant-itens-p")
+    quantItemP.textContent = localStorage.getItem("quantItens")
     console.log("p-->" + localStorage.getItem("linkImgs"))
     console.log("aux-->" + localStorage.getItem("storageAux"))
     Categoria.organizarCategoriasTemas()
@@ -26,6 +28,8 @@ if(url_atual.endsWith("index.html") || url_atual == "https://4funcafe.vercel.app
         });
       }
 }else if(url_atual.endsWith("/temas.html")) {
+    let quantItemP = document.querySelector(".quant-itens-p")
+    quantItemP.textContent = localStorage.getItem("quantItens")
     console.log("p-->" + localStorage.getItem("linkImgs"))
     console.log("aux-->" + localStorage.getItem("storageAux"))
 Categoria.arrayCategorias.sort((a, b) => a.nome.localeCompare(b.nome));
@@ -45,6 +49,8 @@ temas.forEach((categoria, i) => {
 });
 
 } else if(url_atual.endsWith("/tema-selecionado.html")){
+    let quantItemP = document.querySelector(".quant-itens-p")
+    quantItemP.textContent = localStorage.getItem("quantItens")
     async function carregarConteudo() {
         // Aguarde a conclusão da função assíncrona
         await TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"));
@@ -56,6 +62,11 @@ temas.forEach((categoria, i) => {
       
       // Chame a função que contém a lógica assíncrona
       carregarConteudo();
+}else if(url_atual.endsWith("/carrinho.html")){
+    let limpar = document.querySelector(".btn-limpar-carrinho")
+    limpar.addEventListener("click",()=>{
+        limparCarrinho()
+    })
 }
 
 function criarBotoesDoCarrinho(){
@@ -94,6 +105,8 @@ function criarBotoesDoCarrinho(){
                     addQuant(buttonMais, quantidade)
                     removerQuant(buttonMenos, quantidade)
                     botaoAdicionarAoCarrinho.addEventListener("click", ()=>{
+                        
+                        if(quantidade.textContent > 0){
                         let categoria = localStorage.getItem("categoria")
                         let numeroDaArte = parseInt(botaoAdicionarAoCarrinho.parentElement.firstChild.textContent.split(":")[1].trim())
                         
@@ -101,7 +114,6 @@ function criarBotoesDoCarrinho(){
 
                         adicionarItemAoCarrinho(categoria ,nomeDoTema, numeroDaArte, parseInt(quantidade.textContent));
 
-                        if(quantidade.textContent > 0){
                             adicionarItem(parseInt(quantidade.textContent))
                             botaoAdicionarAoCarrinho.remove()
                             buttonMais.remove()
@@ -132,5 +144,3 @@ function removerQuant(botao, quantidade){
     })
 }
 
-let quantItemP = document.querySelector(".quant-itens-p")
-quantItemP.textContent = localStorage.getItem("quantItens")

@@ -44,11 +44,11 @@ function adicionarItemAoCarrinho(nomeCategoria, nomeItem, numeroItem, quantidade
 }
 
 function limparCarrinho() {
-    // Define o carrinho como um array vazio
-    const carrinhoVazio = [];
+        const carrinhoVazio = [];
+        localStorage.setItem("quantItens", 0)
     
-    // Atualiza o carrinho no localStorage
-    localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoVazio));
+        // Atualiza o carrinho no localStorage
+        localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoVazio));
 }
 
 inicializarQuantidadeItens()
