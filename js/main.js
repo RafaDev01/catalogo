@@ -1,7 +1,7 @@
 import Categoria from "./categorias.js";
 import Temas from "./temas.js";
 import TemaSelecionado from "./tema-selecionado.js"
-import { adicionarItem, adicionarItemAoCarrinho, limparCarrinho } from "./carrinho.js"
+import { adicionarItem, adicionarItemAoCarrinho, limparCarrinho, visualizarCarrinho } from "./carrinho.js"
 
 let url_atual = window.location.href;
 console.log(url_atual)
@@ -66,7 +66,11 @@ temas.forEach((categoria, i) => {
     let limpar = document.querySelector(".btn-limpar-carrinho")
     limpar.addEventListener("click",()=>{
         limparCarrinho()
-    })
+        let a = document.querySelector(".container-carrinho")
+        a.remove()
+    })  
+    let arrayCarrinho = localStorage.getItem("carrinhoItens")
+    visualizarCarrinho(arrayCarrinho)
 }
 
 function criarBotoesDoCarrinho(){
