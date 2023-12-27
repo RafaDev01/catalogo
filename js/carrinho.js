@@ -48,8 +48,7 @@ function limparCarrinho() {
         localStorage.setItem("quantItens", 0)
     
         // Atualiza o carrinho no localStorage
-        localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoVazio));
-        
+        localStorage.setItem("carrinhoItens", JSON.stringify(carrinhoVazio));   
 }
 
 function visualizarCarrinho(arrayDeItens) {
@@ -73,35 +72,104 @@ function visualizarCarrinho(arrayDeItens) {
     }
 }
 
-function gerarItensDoCarrinho(argArray){
-    let containerCarrinho = document.querySelector(".container-carrinho") 
-    let li = document.createElement("li")
-    let div = document.createElement("div")
-    let ul = document.createElement("ul")
-    let liCategoira = document.createElement("li")
-    let liNome = document.createElement("li")
-    let liNumeroArte = document.createElement("li")
-    let liQuantidade = document.createElement("li")
+function gerarItensDoCarrinho(argArray) {
+    let containerCarrinho = document.querySelector(".container-carrinho");
+    let li = document.createElement("li");
+    let div = document.createElement("div");
+    let ul = document.createElement("ul");
+    let liCategoira = document.createElement("li");
+    let liNome = document.createElement("li");
+    let liNumeroArte = document.createElement("li");
+    let liQuantidade = document.createElement("li");
+    let btnApagar = document.createElement("button");
 
-    liCategoira.textContent = argArray.categoria
-    liNome.textContent = argArray.nome
-    liNumeroArte.textContent = argArray.numeroArte
-    liQuantidade.textContent = argArray.quantidade
+    btnApagar.setAttribute("class", "apagar-item");
+    btnApagar.textContent = "Apagar";
+    liCategoira.textContent = argArray.categoria;
+    liNome.textContent = argArray.nome;
+    liNumeroArte.textContent = argArray.numeroArte;
+    liQuantidade.textContent = argArray.quantidade;
 
-    ul.appendChild(liCategoira)
-    ul.appendChild(liNome)
-    ul.appendChild(liNumeroArte)
-    ul.appendChild(liQuantidade)
+    ul.appendChild(liCategoira);
+    ul.appendChild(liNome);
+    ul.appendChild(liNumeroArte);
+    ul.appendChild(liQuantidade);
 
+    div.appendChild(ul);
+    div.appendChild(btnApagar);
 
-    console.log(argArray)
+    li.appendChild(div);
+    containerCarrinho.appendChild(li);
 
-    div.appendChild(ul)
+    // Adiciona o evento de clique diretamente no botão
+    btnApagar.addEventListener("click", () => {
+        // Obtém o array de itens do localStorage
+        let arrayDeItens = JSON.parse(localStorage.getItem("carrinhoItens")) || [];
 
-    li.appendChild(div)
-    containerCarrinho.appendChild(li)
+        // Remove o item do array
+        const indice = containerCarrinho.children.length - 1;
+        if (indice >= 0 && indice < arrayDeItens.length) {
+            arrayDeItens.splice(indice, 1);
 
+            // Atualiza o localStorage com o novo array
+            localStorage.setItem("carrinhoItens", JSON.stringify(arrayDeItens));
+
+            // Remove o elemento do DOM
+            li.remove();
+
+            console.log(localStorage.getItem("carrinhoItens"));
+        }
+    });
 }
+
+function apagarItem() {
+    let botaoApagar = [...document.querySelectorAll(".apagar-item")];
+
+    botaoApagar.forEach((element) => {
+        element.addEventListener("click", () => {
+            // Obtém o índice do item a ser removido
+            const indice = parseInt(element.dataset.index, 10);
+
+            // Obtém o array de itens do localStorage
+            let arrayDeItens = JSON.parse(localStorage.getItem("carrinhoItens")) || [];
+
+            // Remove o item do array
+            if (!isNaN(indice) && indice >= 0 && indice < arrayDeItens.length) {
+                // Guarda o item removido para criar a mensagem depois
+                const itemRemovido = arrayDeItens[indice];
+
+                // Atualiza o localStorage com o novo array
+                arrayDeItens.splice(indice, 1);
+                localStorage.setItem("carrinhoItens", JSON.stringify(arrayDeItens));
+
+                // Remove o elemento do DOM
+                element.parentElement.remove();
+
+                // Cria e envia a mensagem no WhatsApp com os itens restantes
+                enviarMensagemNoWhatsApp(arrayDeItens);
+
+                console.log(localStorage.getItem("carrinhoItens"));
+            }
+        });
+    });
+}
+
+function enviarMensagemNoWhatsApp(itens) {
+    // Crie a mensagem com base nos itens
+    let mensagem = "Itens no carrinho:\n";
+
+    itens.forEach((item) => {
+        mensagem += `Categoria: ${item.categoria}, Nome: ${item.nome}, Quantidade: ${item.quantidade}\n`;
+    });
+
+    // Substitua este link pela API do WhatsApp ou pela lógica específica do seu aplicativo
+    const linkWhatsApp = `https://wa.me/11970652887?text=${encodeURIComponent(mensagem)}`;
+    
+    // Abre uma nova janela ou guia com o link do WhatsApp
+    window.open(linkWhatsApp, '_blank');
+}
+
+enviarMensagemNoWhatsApp(JSON.parse(localStorage.getItem("carrinhoItens")))
 
 inicializarQuantidadeItens()
 
