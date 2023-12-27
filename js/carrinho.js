@@ -159,7 +159,7 @@ function enviarMensagemNoWhatsApp(itens) {
     let mensagem = "Itens no carrinho:\n";
 
     itens.forEach((item) => {
-        mensagem += `Categoria: ${item.categoria}, Nome: ${item.nome}, Quantidade: ${item.quantidade}\n`;
+        mensagem += `Categoria: ${item.categoria}, Numero da Arte: ${item.numeroArte}  ,Nome: ${item.nome}, Quantidade: ${item.quantidade}\n\n`;
     });
 
     // Substitua este link pela API do WhatsApp ou pela lógica específica do seu aplicativo
