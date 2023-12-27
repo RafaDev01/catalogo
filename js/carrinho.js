@@ -163,20 +163,12 @@ function enviarMensagemNoWhatsApp(itens) {
     });
 
     // Substitua este link pela API do WhatsApp ou pela lógica específica do seu aplicativo
-    const linkWhatsApp = `https://wa.me/11970652887?text=${encodeURIComponent(mensagem)}`;
+    const linkWhatsApp = `https://wa.me/+11970652887?text=${encodeURIComponent(mensagem)}`;
     
     // Abre uma nova janela ou guia com o link do WhatsApp
     window.open(linkWhatsApp, '_blank');
 }
 
-let botaoFinalizarCompra = document.querySelector(".finalizar-compra")
-
-botaoFinalizarCompra.addEventListener("click", ()=>{
-    enviarMensagemNoWhatsApp(JSON.parse(localStorage.getItem("carrinhoItens")))
-})
-
-
-
 inicializarQuantidadeItens()
 
-export { adicionarItem, adicionarItemAoCarrinho, limparCarrinho, visualizarCarrinho };
+export { adicionarItem, adicionarItemAoCarrinho, limparCarrinho, visualizarCarrinho, enviarMensagemNoWhatsApp };
