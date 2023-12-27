@@ -169,7 +169,13 @@ function enviarMensagemNoWhatsApp(itens) {
     window.open(linkWhatsApp, '_blank');
 }
 
-enviarMensagemNoWhatsApp(JSON.parse(localStorage.getItem("carrinhoItens")))
+let botaoFinalizarCompra = document.querySelector(".finalizar-compra")
+
+botaoFinalizarCompra.addEventListener("click", ()=>{
+    enviarMensagemNoWhatsApp(JSON.parse(localStorage.getItem("carrinhoItens")))
+})
+
+
 
 inicializarQuantidadeItens()
 
