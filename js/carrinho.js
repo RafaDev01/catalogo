@@ -163,7 +163,7 @@ function enviarMensagemNoWhatsApp(itens) {
     });
 
     // Substitua este link pela API do WhatsApp ou pela lógica específica do seu aplicativo
-    const linkWhatsApp = `https://wa.me/+11970652887?text=${encodeURIComponent(mensagem)}`;
+    const linkWhatsApp = `https://wa.me/+5511970652887?text=${encodeURIComponent(mensagem)}`;
     
     // Abre uma nova janela ou guia com o link do WhatsApp
     window.open(linkWhatsApp, '_blank');
