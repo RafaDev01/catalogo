@@ -65,16 +65,29 @@ temas.forEach((categoria, i) => {
 }else if(url_atual.endsWith("/carrinho.html")){
     let limpar = document.querySelector(".btn-limpar-carrinho")
     limpar.addEventListener("click",()=>{
-        limparCarrinho()
-        let a = document.querySelector(".container-carrinho")
-        a.remove()
+
+        var carrinhoItens = localStorage.getItem("carrinhoItens");
+
+        if (!carrinhoItens || JSON.parse(carrinhoItens).length === 0) {
+            alert("O carrinho já está vazio.");
+        }else{
+            limparCarrinho()
+            let a = document.querySelector(".container-carrinho")
+            a.remove()
+        }     
     })  
     let arrayCarrinho = localStorage.getItem("carrinhoItens")
     visualizarCarrinho(arrayCarrinho)
 
     let botaoFinalizarCompra = document.querySelector(".finalizar-compra")
     botaoFinalizarCompra.addEventListener("click", ()=>{
-        enviarMensagemNoWhatsApp(JSON.parse(localStorage.getItem("carrinhoItens")))
+        var carrinhoItens = localStorage.getItem("carrinhoItens");
+
+        if (!carrinhoItens || JSON.parse(carrinhoItens).length === 0) {
+            alert("O carrinho está vazio, selecione alguns itens.");
+        }else{
+            enviarMensagemNoWhatsApp(JSON.parse(localStorage.getItem("carrinhoItens")))
+        }
     })
 }
 

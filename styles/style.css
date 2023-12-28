@@ -203,3 +203,63 @@ img{
     font-size: 20px;
     font-weight: bold;
   }
+
+  .container-carrinho{
+    align-items: flex-start;
+    width: 90vw;
+    margin: 0 auto;
+    list-style: none;
+  }
+
+  .box-item-carrinho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 3px solid #1da5ff;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 1.2em;
+    font-weight: 420;
+  }
+
+  .box-item-carrinho ul{
+    list-style: none;
+  }
+
+  .apagar-item{
+    height: 50px;
+    width: 50px;
+    background-image: url(../assets/img/design/svg/lixeira.svg);
+    background-size: contain;
+    border-radius: 16px;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .finalizar-compra{
+    background-color: var(--laranja-principal);
+    color: white;
+    font-size: 1.5em;
+    width: 80vw;
+    height: 60px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+
+  .btn-limpar-carrinho{
+    background-color: red;
+    color: white;
+    font-size: 1.1em;
+    width: 50vw;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+
+  .botoes-finais{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }

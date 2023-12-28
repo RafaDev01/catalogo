@@ -83,12 +83,13 @@ function gerarItensDoCarrinho(argArray) {
     let liQuantidade = document.createElement("li");
     let btnApagar = document.createElement("button");
 
+    div.setAttribute("class", "box-item-carrinho")
     btnApagar.setAttribute("class", "apagar-item");
-    btnApagar.textContent = "Apagar";
-    liCategoira.textContent = argArray.categoria;
-    liNome.textContent = argArray.nome;
-    liNumeroArte.textContent = argArray.numeroArte;
-    liQuantidade.textContent = argArray.quantidade;
+    liCategoira.textContent = "Categoria: " + argArray.categoria;
+    liNome.textContent = "Nome: " + argArray.nome;
+    liNumeroArte.textContent = "Numero da arte: " + argArray.numeroArte;
+    liQuantidade.innerHTML = `QUANTIDADE: 
+    <b>${argArray.quantidade}</b>`;
 
     ul.appendChild(liCategoira);
     ul.appendChild(liNome);
@@ -159,7 +160,7 @@ function enviarMensagemNoWhatsApp(itens) {
     let mensagem = "Itens no carrinho:\n";
 
     itens.forEach((item) => {
-        mensagem += `Categoria: ${item.categoria}\nNumero da Arte: ${item.numeroArte}\nNome: ${item.nome}\nQuantidade: ${item.quantidade}\n--------------------\n`;
+        mensagem += `Categoria: ${item.categoria}\nNumero da Arte: ${item.numeroArte}\nNome: ${item.nome}\n\nQUANTIDADE: ${item.quantidade}*\n----------------------------\n`;
     });
 
     // Substitua este link pela API do WhatsApp ou pela lógica específica do seu aplicativo
