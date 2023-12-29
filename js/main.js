@@ -95,7 +95,7 @@ function criarBotoesDoCarrinho(){
     window.addEventListener("load", () => {
         let botoesDasImg = [...document.querySelectorAll(".button-carrinho")];
         botoesDasImg.forEach(element => {
-                element.addEventListener("click", () => {
+                element.addEventListener("click" || "touchend", () => {
                     let p = document.createElement("p")
                     let quantidade = document.createElement("p")
                     let buttonMais = document.createElement("button")

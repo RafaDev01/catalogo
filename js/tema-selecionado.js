@@ -57,7 +57,7 @@ class TemaSelecionado {
       });
 
       // Adicione aqui a lógica para o que acontece quando o botão é selecionado
-      div.addEventListener("click", (event) => {
+      div.addEventListener("click" || "touchend", (event) => {
         if (event.target.classList.contains("button-carrinho")) {
           console.log("Botão Selecionar clicado!");
           // Adicione a lógica desejada para quando o botão for clicado

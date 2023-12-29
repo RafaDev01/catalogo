@@ -77,7 +77,7 @@ function gerarItensDoCarrinho(argArray) {
     li.appendChild(div);
     containerCarrinho.appendChild(li);
 
-    btnApagar.addEventListener("click", () => {
+    btnApagar.addEventListener("click" || "touchend", () => {
         const arrayDeItens = JSON.parse(localStorage.getItem("carrinhoItens")) || [];
         const indice = containerCarrinho.children.length - 1;
 
