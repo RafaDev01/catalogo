@@ -15,17 +15,12 @@ class TemaSelecionado {
         divBox.setAttribute("class", "box-img");
 
         let numeroDaArte = document.createElement("p");
-        numeroDaArte.setAttribute("class", "numero-da-arte")
-        numeroDaArte.textContent =  `Numero da arte: ${i}`;
-
-        let buttonCarrinho = document.createElement("button");
-        buttonCarrinho.setAttribute("class", "button-carrinho");
-        buttonCarrinho.textContent = "Selecionar";
+        numeroDaArte.setAttribute("class", "numero-da-arte");
+        numeroDaArte.textContent = `Numero da arte: ${i}`;
 
         div.appendChild(divBox);
         divBox.appendChild(numeroDaArte);
         divBox.appendChild(img);
-        divBox.appendChild(buttonCarrinho);
 
         // Continue carregando a próxima imagem
         i++;
@@ -40,7 +35,8 @@ class TemaSelecionado {
         };
 
         proximaImagem.onerror = function () {
-          console.log("Imgs carregadas com sucesso");
+          // Todas as imagens foram carregadas, agora adicionamos o botão
+          adicionarBotaoSelecionar();
         };
       };
 
@@ -48,6 +44,25 @@ class TemaSelecionado {
         // A imagem não carregou corretamente, então não fazemos nada
         body.appendChild(div);
       };
+    }
+
+    function adicionarBotaoSelecionar() {
+      let buttonCarrinho = document.createElement("button");
+      buttonCarrinho.setAttribute("class", "button-carrinho");
+      buttonCarrinho.textContent = "Selecionar";
+
+      // Adiciona o botão "Selecionar" a cada box-img
+      div.querySelectorAll(".box-img").forEach((boxImg) => {
+        boxImg.appendChild(buttonCarrinho.cloneNode(true));
+      });
+
+      // Adicione aqui a lógica para o que acontece quando o botão é selecionado
+      div.addEventListener("click", (event) => {
+        if (event.target.classList.contains("button-carrinho")) {
+          console.log("Botão Selecionar clicado!");
+          // Adicione a lógica desejada para quando o botão for clicado
+        }
+      });
     }
 
     // Inicie o processo de carregamento da primeira imagem
