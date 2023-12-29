@@ -112,7 +112,7 @@ function enviarMensagemNoWhatsApp(itens) {
     let mensagem = "Itens no carrinho:\n";
 
     itens.forEach((item) => {
-        mensagem += `Categoria: ${item.categoria}\nNumero da Arte: ${item.numeroArte}\nNome: ${item.nome}\n\nQUANTIDADE: ${item.quantidade}*\n----------------------------\n`;
+        mensagem += `Categoria: ${item.categoria}\nNumero da Arte: ${item.numeroArte}\nNome: ${item.nome}\n\nQUANTIDADE: *${item.quantidade}*\n----------------------------\n`;
     });
     const linkWhatsApp = `https://wa.me/+5511970652887?text=${encodeURIComponent(mensagem)}`;
     window.open(linkWhatsApp, '_blank');
