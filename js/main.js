@@ -55,8 +55,6 @@ temas.forEach((categoria, i) => {
         // Aguarde a conclusão da função assíncrona
         await TemaSelecionado.criarImgs(localStorage.getItem("linkImgs"));
       
-        criarBotoesDoCarrinho()
-      
         // Adicione aqui o restante do código que deseja executar após a carga do conteúdo.
       }
       
@@ -91,11 +89,17 @@ temas.forEach((categoria, i) => {
     })
 }
 
+/*
+//criando a funcao
 function criarBotoesDoCarrinho(){
+    //adicionando evt de load da pagin a
     window.addEventListener("load", () => {
+        //query selector all em "Selecionar"
         let botoesDasImg = [...document.querySelectorAll(".button-carrinho")];
+        //for each em cada botao
         botoesDasImg.forEach(element => {
                 element.addEventListener("click" || "touchend", () => {
+                    //criando os elemntos HMTL
                     let p = document.createElement("p")
                     let quantidade = document.createElement("p")
                     let buttonMais = document.createElement("button")
@@ -165,4 +169,12 @@ function removerQuant(botao, quantidade){
         }
     })
 }
+*/
 
+let teste = document.querySelectorAll(".button-carrinho");
+
+teste.forEach((elemento) => {
+    elemento.addEventListener("click", () => {
+        console.log("clicou");
+    });
+});

@@ -10,7 +10,6 @@ class TemaSelecionado {
       img.src = link + i + ".webp";
 
       img.onload = function () {
-        // A imagem carregou com sucesso, então a adicionamos à div
         let divBox = document.createElement("div");
         divBox.setAttribute("class", "box-img");
 
@@ -22,45 +21,102 @@ class TemaSelecionado {
         divBox.appendChild(numeroDaArte);
         divBox.appendChild(img);
 
-        // Continue carregando a próxima imagem
+        adicionarBotaoSelecionar(divBox);  // Adiciona botão "Selecionar" e ouvinte
+
         i++;
 
-        // Verifica se a próxima imagem existe
         const proximaImagem = new Image();
         proximaImagem.src = link + i + ".webp";
 
         proximaImagem.onload = function () {
-          // A próxima imagem existe, continue carregando
           carregarImagem(i);
         };
 
         proximaImagem.onerror = function () {
-          // Todas as imagens foram carregadas, agora adicionamos o botão
           adicionarBotaoSelecionar();
         };
       };
 
       img.onerror = function () {
-        // A imagem não carregou corretamente, então não fazemos nada
         body.appendChild(div);
       };
     }
 
-    function adicionarBotaoSelecionar() {
+    function adicionarBotaoSelecionar(divBox) {
       let buttonCarrinho = document.createElement("button");
       buttonCarrinho.setAttribute("class", "button-carrinho");
       buttonCarrinho.textContent = "Selecionar";
+      divBox.appendChild(buttonCarrinho);
 
-      // Adiciona o botão "Selecionar" a cada box-img
-      div.querySelectorAll(".box-img").forEach((boxImg) => {
-        boxImg.appendChild(buttonCarrinho.cloneNode(true));
+      buttonCarrinho.addEventListener("click", () => {
+        criarBotoesDoCarrinho(divBox);
       });
+    }
 
-      // Adicione aqui a lógica para o que acontece quando o botão é selecionado
-      div.addEventListener("click" || "touchend", (event) => {
-        if (event.target.classList.contains("button-carrinho")) {
-          console.log("Botão Selecionar clicado!");
-          // Adicione a lógica desejada para quando o botão for clicado
+    function criarBotoesDoCarrinho(divBox) {
+      let container = document.createElement("div");
+      let p = document.createElement("p");
+      let quantidade = document.createElement("p");
+      let buttonMais = document.createElement("button");
+      let buttonMenos = document.createElement("button");
+      let botaoAdicionarAoCarrinho = document.createElement("button");
+
+      container.classList.add("container-quant");
+      p.classList.add("p-quantidade");
+      quantidade.classList.add("quantidade");
+      buttonMais.classList.add("btn-mais");
+      buttonMenos.classList.add("btn-menos");
+      botaoAdicionarAoCarrinho.classList.add("adicionar-ao-carrinho");
+
+      p.textContent = "Quantidade: ";
+      quantidade.textContent = 0;
+      buttonMais.textContent = "+";
+      buttonMenos.textContent = "-";
+      botaoAdicionarAoCarrinho.textContent = "Adicionar ao carrinho";
+
+      container.appendChild(p);
+      container.appendChild(buttonMenos);
+      container.appendChild(quantidade);
+      container.appendChild(buttonMais);
+
+      divBox.appendChild(container);
+      divBox.appendChild(botaoAdicionarAoCarrinho);
+
+      addQuant(buttonMais, quantidade);
+      removerQuant(buttonMenos, quantidade);
+
+      botaoAdicionarAoCarrinho.addEventListener("click", () => {
+        if (quantidade.textContent > 0) {
+          let categoria = localStorage.getItem("categoria");
+          let numeroDaArte = parseInt(
+            divBox.querySelector(".numero-da-arte").textContent.split(":")[1].trim()
+          );
+          let nomeDoTema = localStorage.getItem("nomeDoTemaDaPagina");
+
+          adicionarItemAoCarrinho(categoria, nomeDoTema, numeroDaArte, parseInt(quantidade.textContent));
+
+          adicionarItem(parseInt(quantidade.textContent));
+          botaoAdicionarAoCarrinho.remove();
+          buttonMais.remove();
+          buttonMenos.remove();
+          quantidade.remove();
+          p.textContent = "Itens adicionados ao carrinho.";
+        }
+      });
+    }
+
+    function addQuant(botao, quantidade) {
+      botao.addEventListener('click', () => {
+        quantidade.textContent++
+      });
+    }
+
+    function removerQuant(botao, quantidade) {
+      botao.addEventListener('click', () => {
+        if (quantidade.textContent == 0) {
+          return;
+        } else {
+          quantidade.textContent--;
         }
       });
     }
