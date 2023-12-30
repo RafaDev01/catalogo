@@ -1,3 +1,5 @@
+import { adicionarItem, adicionarItemAoCarrinho } from "./carrinho.js"
+
 class TemaSelecionado {
   static async criarImgs(link) {
     let div = document.createElement("div");
@@ -50,6 +52,7 @@ class TemaSelecionado {
 
       buttonCarrinho.addEventListener("click", () => {
         criarBotoesDoCarrinho(divBox);
+        buttonCarrinho.remove()
       });
     }
 

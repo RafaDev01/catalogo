@@ -1,6 +1,6 @@
 import Categoria from "./categorias.js";
 
-const quantItemP = document.querySelector(".quant-itens-p");
+let quantItemP = document.querySelector(".quant-itens-p");
 
 function obterQuantidadeItens() {
     const quantItens = localStorage.getItem("quantItens");
@@ -65,7 +65,9 @@ function gerarItensDoCarrinho(argArray) {
     };
 
     div.classList.add("box-item-carrinho");
-    btnApagar.classList.add("apagar-item");
+
+    //----------------------------------------Precisa corrigir o erro do botao, ele remove o ultimo elemento do array ao inves do elemento que deveria ser removido
+    //btnApagar.classList.add("apagar-item");
 
     ul.appendChild(criarLI(`Categoria: ${argArray.categoria}`));
     ul.appendChild(criarLI(`Nome: ${argArray.nome}`));
@@ -84,6 +86,14 @@ function gerarItensDoCarrinho(argArray) {
         if (indice >= 0 && indice < arrayDeItens.length) {
             arrayDeItens.splice(indice, 1);
             localStorage.setItem("carrinhoItens", JSON.stringify(arrayDeItens));
+            let texto = li.firstChild.firstChild.lastChild.textContent
+
+            let quantidade = parseInt(texto.split(":")[1].trim());
+            let quantItens = Number(localStorage.getItem("quantItens"))
+            parseInt(quantItens -= quantidade)
+            
+            localStorage.setItem("quantItens", quantItens )
+
             li.remove();
         }
     });
